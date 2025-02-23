@@ -24,7 +24,7 @@ const formSchema = z.object({
   password: z.string().min(2, {
     message: 'Username must be at least 6 characters.',
   }),
-  repeat: z.string().min(2, {
+  password2: z.string().min(2, {
     message: 'Username must be at least 6 characters.',
   }),
 });
@@ -37,7 +37,12 @@ export default function Register() {
     },
   });
 
-  const onSubmit = (formFields: any) => {
+  const onSubmit = (formFields: {
+    username: string,
+    email:string,
+    password:string,
+    password2:string
+  }) => {
     console.log(formFields);
   };
 
@@ -86,7 +91,7 @@ export default function Register() {
         />
         <FormField
           control={form.control}
-          name="repeat"
+          name="password2"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Repeat password</FormLabel>
